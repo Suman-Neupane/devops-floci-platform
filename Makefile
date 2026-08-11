@@ -48,7 +48,7 @@ app-run:
 	cd app && AWS_ENDPOINT_URL=$(AWS_ENDPOINT) AWS_DEFAULT_REGION=$(AWS_REGION) uvicorn src.main:app --reload --port 8000
 
 test:
-	cd app && AWS_ENDPOINT_URL=$(AWS_ENDPOINT) AWS_DEFAULT_REGION=$(AWS_REGION) pytest -v tests/
+	PYTHONPATH=app AWS_ENDPOINT_URL=$(AWS_ENDPOINT) AWS_DEFAULT_REGION=$(AWS_REGION) python3 -m pytest -v app/tests/
 
 k8s-cluster:
 	k3d cluster create devops-cluster --port "8080:80@loadbalancer" --agents 2 || kind create cluster --name devops-cluster
