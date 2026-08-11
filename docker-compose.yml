@@ -1,0 +1,21 @@
+services:
+  floci:
+    image: floci/floci:latest
+    container_name: floci-aws-emulator
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,dynamodb,sqs,iam,lambda,sts
+      - AWS_DEFAULT_REGION=eu-central-1
+      - LOG_LEVEL=info
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4566/_floci/health || curl -f http://localhost:4566/health || exit 0"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - devops-net
+
+networks:
+  devops-net:
+    driver: bridge

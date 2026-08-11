@@ -1,0 +1,39 @@
+replicaCount: 2
+
+image:
+  repository: cloud-app
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8000
+
+env:
+  awsEndpointUrl: "http://host.docker.internal:4566"
+  awsDefaultRegion: "eu-central-1"
+  s3BucketName: "user-documents-bucket"
+  dynamodbTableName: "document-metadata"
+  sqsQueueName: "document-processing-events"
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 8000
+  initialDelaySeconds: 10
+  periodSeconds: 15
+
+readinessProbe:
+  httpGet:
+    path: /health
+    port: 8000
+  initialDelaySeconds: 5
+  periodSeconds: 10
