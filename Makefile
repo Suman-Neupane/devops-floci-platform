@@ -45,7 +45,7 @@ app-build:
 	docker build -t cloud-app:latest ./app
 
 app-run:
-	cd app && AWS_ENDPOINT_URL=$(AWS_ENDPOINT) AWS_DEFAULT_REGION=$(AWS_REGION) uvicorn src.main:app --reload --port 8000
+	cd app && AWS_ENDPOINT_URL=$(AWS_ENDPOINT) AWS_DEFAULT_REGION=$(AWS_REGION) python3 -m uvicorn src.main:app --reload --port 8000
 
 test:
 	PYTHONPATH=app AWS_ENDPOINT_URL=$(AWS_ENDPOINT) AWS_DEFAULT_REGION=$(AWS_REGION) python3 -m pytest -v app/tests/
