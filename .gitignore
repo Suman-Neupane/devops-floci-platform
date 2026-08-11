@@ -1,12 +1,22 @@
+# Environment variables & secrets (CRITICAL: Never commit real credentials)
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+
 # Terraform temporary & state files
 .terraform/
 *.tfstate
 *.tfstate.backup
 *.tfvars
 *.tfvars.json
-.terraform.lock.hcl
+# Note: .terraform.lock.hcl SHOULD be committed to version control per HashiCorp guidelines
 
-# Python cache & venv
+# Python cache & virtual environments
 __pycache__/
 *.py[cod]
 *$py.class
