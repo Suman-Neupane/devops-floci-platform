@@ -119,15 +119,5 @@ curl -X GET "http://localhost:8000/documents"
 
 ---
 
-## 🇩🇪 CV Highlights for German Engineering Roles (Werkstudent / Junior)
-
-When applying for DevOps / Cloud Engineering roles in Germany, use these resume bullet points:
-
-- **Infrastructure as Code**: *"Designed and provisioned modular AWS infrastructure (S3, DynamoDB, SQS) using **Terraform** targeting **Floci** local emulator to eliminate cloud dev costs."*
-- **Container Orchestration & GitOps**: *"Packaged microservices with **Helm** and configured automated declarative deployment via **ArgoCD** on a local **k3d Kubernetes** cluster."*
-- **Observability & DevSecOps**: *"Implemented a full-stack **GitHub Actions** CI/CD pipeline integrated with **Trivy** vulnerability scanning, **Checkov** static analysis, and **Prometheus/Grafana** telemetry."*
-
----
-
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
